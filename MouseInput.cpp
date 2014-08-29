@@ -14,6 +14,19 @@ MouseInput::~MouseInput(void)
 {
 }
 
+void MouseInput::mouseMove(HWND* hwnd, LONG x, LONG y)
+{
+	RECT rect;
+	GetWindowRect(*hwnd, &rect);
+
+	x += rect.left;
+	y += rect.top;
+
+	SetForegroundWindow(*hwnd);
+	SetCursorPos(x, y);
+	Sleep(MOUSE_DELAY);
+}
+
 void MouseInput::mouseClick(HWND* hwnd, LONG x, LONG y)
 {
 	RECT rect;

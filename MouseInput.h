@@ -10,7 +10,7 @@ public:
 
 	MouseInput(void);
 	~MouseInput(void);
+	static void mouseMove(HWND* hwnd, LONG x, LONG y);
 	static void mouseClick(HWND* hwnd, LONG x, LONG y);
 	static void mouseRightClick(HWND* hwnd, LONG x, LONG y);
 };
-
