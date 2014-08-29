@@ -14,7 +14,7 @@ MouseInput::~MouseInput(void)
 {
 }
 
-void MouseInput::mouseMove(HWND* hwnd, LONG x, LONG y)
+void MouseInput::mouseMove(HWND* hwnd, float x, float y)
 {
 	RECT rect;
 	GetWindowRect(*hwnd, &rect);
@@ -23,11 +23,11 @@ void MouseInput::mouseMove(HWND* hwnd, LONG x, LONG y)
 	y += rect.top;
 
 	SetForegroundWindow(*hwnd);
-	SetCursorPos(x, y);
+	SetCursorPos(x * GetSystemMetrics(SM_CXSCREEN), y * GetSystemMetrics(SM_CYSCREEN));
 	Sleep(MOUSE_DELAY);
 }
 
-void MouseInput::mouseClick(HWND* hwnd, LONG x, LONG y)
+void MouseInput::mouseClick(HWND* hwnd, float x, float y)
 {
 	RECT rect;
 	GetWindowRect(*hwnd, &rect);
@@ -36,14 +36,14 @@ void MouseInput::mouseClick(HWND* hwnd, LONG x, LONG y)
 	y += rect.top;
 
 	SetForegroundWindow(*hwnd);
-	SetCursorPos(x, y);
+	SetCursorPos(x * GetSystemMetrics(SM_CXSCREEN), y * GetSystemMetrics(SM_CYSCREEN));
 	Sleep(MOUSE_DELAY);
 	PostMessage(*hwnd, WM_LBUTTONDOWN, 0, MAKELPARAM(x, y));
 	Sleep(MOUSE_DELAY);
 	PostMessage(*hwnd, WM_LBUTTONUP, 0, MAKELPARAM(x, y));
 }
 
-void MouseInput::mouseRightClick(HWND* hwnd, LONG x, LONG y)
+void MouseInput::mouseRightClick(HWND* hwnd, float x, float y)
 {
 	RECT rect;
 	GetWindowRect(*hwnd, &rect);
@@ -52,7 +52,7 @@ void MouseInput::mouseRightClick(HWND* hwnd, LONG x, LONG y)
 	y += rect.top;
 
 	SetForegroundWindow(*hwnd);
-	SetCursorPos(x, y);
+	SetCursorPos(x * GetSystemMetrics(SM_CXSCREEN), y * GetSystemMetrics(SM_CYSCREEN));
 	Sleep(MOUSE_DELAY);
 	PostMessage(*hwnd, WM_RBUTTONDOWN, 0, MAKELPARAM(x, y));
 	Sleep(MOUSE_DELAY);

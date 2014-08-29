@@ -12,12 +12,12 @@ int main()
 		return 1;
 	}
 	Sleep(1000);
-	MouseInput::mouseClick(&hWnd, 200, 200);
+	MouseInput::mouseMove(&hWnd, 0.1, 0.1);
 	Sleep(1000);
-	MouseInput::mouseClick(&hWnd, 400, 200);
+	MouseInput::mouseMove(&hWnd, 0.1, 0.9);
 	Sleep(1000);
-	MouseInput::mouseClick(&hWnd, 400, 400);
+	MouseInput::mouseMove(&hWnd, 0.9, 0.9);
 	Sleep(1000);
-	MouseInput::mouseClick(&hWnd, 200, 400);
+	MouseInput::mouseMove(&hWnd, 0.9, 0.1);
 	return 0;
 }
