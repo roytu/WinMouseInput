@@ -19,11 +19,13 @@ class MyGaze : public gtl::IGazeListener
 };
 
 // --- MyGaze implementation
+
 MyGaze::MyGaze()
 {
     // Connect to the server in push mode on the default TCP port (6555)
     if( m_api.connect( true ) )
     {
+		std::cout << "Connected!" << std::endl;
         // Enable GazeData notifications
         m_api.add_listener( *this );
     }
@@ -44,6 +46,16 @@ void MyGaze::on_gaze_data( gtl::GazeData const & gaze_data )
         float lefty = gaze_data.lefteye.raw.y;
         float rightx = gaze_data.righteye.raw.x;
         float righty = gaze_data.righteye.raw.y;
+		HWND hwnd = GetDesktopWindow();
+		MouseInput::mouseMove(&hwnd, (leftx + rightx) / 2, (lefty + righty) / 2);
 		std::cout << leftx << " " << lefty << " " << rightx << " " << righty << std::endl;
     }
+}
+
+int main() {
+	MyGaze gaze = MyGaze();
+	while(true) {
+		Sleep(2);
+	}
+	return 0;
 }
