@@ -3,8 +3,8 @@ CPP_COMPILER = g++
 C_COMPILER = gcc
 
 # Include paths...
-Debug_Include_Path=
-Release_Include_Path=
+Debug_Include_Path=-I"include"
+Release_Include_Path=-I"include"
 
 # Library paths...
 Debug_Library_Path=
